@@ -6,7 +6,7 @@
 #include <ObjBase.h>      // include the base COM header
 #include <Netlistmgr.h>
 #include "LeeContainer.h"
-#include <QtCore/QString>
+#include <QtCore/QFile>
 #include <iostream>
 #include <QtNetwork/QNetWorkReply>
 #include <QtNetwork/QNetWorkAccessManager>

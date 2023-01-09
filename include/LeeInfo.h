@@ -13,7 +13,7 @@
 #include <QtCore/QDir>
 #include <QtNetwork/QNetWorkInterFace>
 #include "LeeDataBase.h"
-#include <windows.data.json.h>
+// #include <windows.data.json.h>
 
 using namespace std;
 
