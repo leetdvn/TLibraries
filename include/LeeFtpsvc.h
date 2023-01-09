@@ -4,7 +4,7 @@
 #pragma once
 #include <Windows.h>
 #include <iostream>
-#include <Qt/QtCore/QFile>
+#include <QtCore/QFile>
 //#include "LeeUtilities.h"
 #include <ObjBase.h>      // include the base COM header
 #include <Netlistmgr.h>

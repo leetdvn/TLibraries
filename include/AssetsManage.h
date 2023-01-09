@@ -1,7 +1,7 @@
 #ifndef ASSETSMANAGE_H
 #define ASSETSMANAGE_H
 #pragma once
-#include <Qt/QtCore/QFile>
+#include <QtCore/QFile>
 #include "lPublic.h"
 
 #define ABC(...) { printf("processor %s\n",__VA_ARGS__);}

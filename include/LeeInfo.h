@@ -9,9 +9,9 @@
 #include <stdlib.h>
 
 // QT incluce
-#include <Qt/QtNetwork/QHostInfo>
-#include <Qt/QtCore/QDir>
-#include <Qt/QtNetwork/QNetWorkInterFace>
+#include <QtNetwork/QHostInfo>
+#include <QtCore/QDir>
+#include <QtNetwork/QNetWorkInterFace>
 #include "LeeDataBase.h"
 #include <windows.data.json.h>
 

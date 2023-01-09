@@ -1,10 +1,9 @@
 #include "LeeInfo.h"
-#include "AssetsManage.h"
 #include "LeeDataBase.h"
 #include <winnt.h>
 #include <omp.h>
-#include <LeeConfirmDialog.h>
-#include <Qt/QtWidgets/QMainWindow>
+#include "AssetsManage.h"
+#include <QtWidgets/QMainWindow>
 #include "LeeFtpsvc.h"
 #include "LeeMacro.h"
 #include <iostream>
