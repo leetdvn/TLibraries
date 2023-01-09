@@ -1,3 +1,7 @@
 /devkitBase
 /.vscode
 /build
+/x64
+/*.sln
+/*.vc*
+/.vs

@@ -54,7 +54,6 @@ using namespace std;
 
 //typedef QString(*TDisplayName)(QString);
 //using DISPLAYNAME = QString(*)(QString);
-#pragma pack(1)
 struct pencil {
 	pencil(QString str);
 	QString toStr();
