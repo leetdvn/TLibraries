@@ -25,8 +25,6 @@ void LeeDataCore::Initialize(const char* file)
 	
 }
 
-
-
 #pragma region database file json and url
 void LeeDataCore::dURL2FILE(QString url, QString fileSave) const
 {
@@ -81,20 +79,28 @@ void LeeDataCore::dSaveFile(QJsonObject content)
 QStringList LeeDataCore::dFileJs2Array(const char* key)
 {
 	QStringList result;
+	QJsonArray arr = dFilejs2QArray(key);
+	foreach(const QJsonValue & v, arr) {
+		QString str = v.toString();
+		result.append(str);
+	}
+	return result;
+}
+
+QJsonArray LeeDataCore::dFilejs2QArray(const char* arrKey)
+{
+	QJsonArray result;
 	QFile f(currentFile);
 	if (f.exists()) {
 		if (f.open(QFileDevice::ReadOnly)) {
 			QByteArray data = f.readAll();
 			QJsonObject obj = QJsonDocument::fromJson(data).object();
-			QJsonArray arr = obj[key].toArray();
-			foreach(const QJsonValue & v, arr) {
-				QString str = v.toString();
-				result.append(str);
-			}
+			result = obj[arrKey].toArray();
 			return result;
 		}
 	}
 	return result;
+
 }
 
 const char* LeeDataCore::dFile2Char(QString path)
@@ -210,7 +216,7 @@ const char* LeeDataCore::dEncrypt(QString toEncrypt) {
 
 }
 
-void LeeDataCore::dSaveFileCommand(QString ifile ,COMMANDAPP lApp, QString opKey, QString ipNewKey)
+void LeeDataCore::dSaveFileCommand(QString ifile , APPINFO lApp, QString opKey, QString ipNewKey)
 {
 	QFile ipF(ifile);
 	if (!ipF.exists()) qDebug() << "not exist : " << ifile << endl;
@@ -228,7 +234,7 @@ void LeeDataCore::dSaveFileCommand(QString ifile ,COMMANDAPP lApp, QString opKey
 		const char* tstr =  ipNewKey.isEmpty() ||
 			ipNewKey.isNull() ||
 			ipNewKey =="" ?
-			Cmd2Str(lApp) :
+			App2Name(lApp) :
 			toData(ipNewKey);
 		//get Json from base Command
 		QJsonObject obj = dFileJs2JsObject();

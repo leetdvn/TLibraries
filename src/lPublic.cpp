@@ -1,7 +1,14 @@
 #include "lPublic.h"
 
 
-INTERNET_STATUS __cdecl IsConnectedToNet()
+void WINAPI getPencil(pencil* arg)
+{
+	arg = new pencil("new pencil");
+	qDebug() << arg->toStr() << endl;
+
+}
+
+INTERNET_STATUS WINAPI IsConnectedToNet()
 {
 	INTERNET_STATUS connectedStatus = INTERNET_STATUS::CONNECTION_ERROR;
 	HRESULT hr = S_FALSE;
@@ -47,11 +54,11 @@ INTERNET_STATUS __cdecl IsConnectedToNet()
 	return connectedStatus;
 }
 
-const char* __cdecl toData(QString str) { return QByteArray(str.toLocal8Bit()).constData(); }
+const char* WINAPI toData(QString str) { return QByteArray(str.toLocal8Bit()).constData(); }
 
-bool __cdecl FileEx(QString filepath) { return  QFile(filepath).exists(); }
+bool WINAPI FileEx(QString filepath) { return  QFile(filepath).exists(); }
 
-bool __cdecl isQOnline()
+bool WINAPI isQOnline()
 {
 	QList<QNetworkInterface> ifaces = QNetworkInterface::allInterfaces();
 	bool result = false;
@@ -76,9 +83,9 @@ bool __cdecl isQOnline()
 	return result;
 }
 
-LPCWSTR __cdecl toWData(QString str) { return (const wchar_t*)str.utf16(); }
+LPCWSTR WINAPI toWData(QString str) { return (const wchar_t*)str.utf16(); }
 
-QString __cdecl FileDetach(QString inStr)
+QString WINAPI FileDetach(QString inStr)
 {
 	QStringList strlist = inStr.split('/');
 	if (strlist.length() <= 1) {
@@ -90,7 +97,7 @@ QString __cdecl FileDetach(QString inStr)
 	return  result;
 }
 
-QWidget* __cdecl LoadUiFile(QString filepath)
+QWidget* WINAPI LoadUiFile(QString filepath)
 {
 	if (filepath.isEmpty() || filepath.isNull() || filepath == "") return Q_NULLPTR;
 	QMainWindow* wid = new QMainWindow();
@@ -106,7 +113,7 @@ QWidget* __cdecl LoadUiFile(QString filepath)
 	return pane;
 }
 
-QString __cdecl BrowserImage(QString Previous)
+QString WINAPI BrowserImage(QString Previous)
 {
 	QString selfilter = "PNG (*.png)";
 	QString ImgPath = QFileDialog::getOpenFileName(
@@ -119,33 +126,33 @@ QString __cdecl BrowserImage(QString Previous)
 	return ImgPath;
 }
 
-constexpr const char* __cdecl Cmd2Str(COMMANDAPP lApp)
+constexpr const char* WINAPI App2Name(APPINFO lApp)
 {
 	switch (lApp)
 	{
-		case COMMANDAPP::LMAYA: return "Maya";
-		case COMMANDAPP::LHONDINI: return "Hondini";
-		case COMMANDAPP::LMAX: return "3DMax";
-		case COMMANDAPP::LBLENDER: return "Blender";
-		case COMMANDAPP::LUNREAL: return "Unreal";
+		case APPINFO::LMAYA: return "Maya";
+		case APPINFO::LHONDINI: return "Hondini";
+		case APPINFO::LMAX: return "3DMax";
+		case APPINFO::LBLENDER: return "Blender";
+		case APPINFO::LUNREAL: return "Unreal";
 	}
 	return NULL;
 }
-//void __cdecl hello(callback helo) {
+//void WINAPI hello(callback helo) {
 //	const char* mess = toData("Directive Processcor : " + QApplication::applicationDisplayName());
 //	MGlobal::displayWarning(mess);
 //	helo = TDisplayName(QString("helo callback"));
 //	return ;
 //}
 
-QString __cdecl TDisplayName(QString Message)
+QString WINAPI TDisplayName(QString Message)
 {
 	const char* mess = toData("Directive Processcor : " + Message);
 	MGlobal::displayWarning(mess);
 	return QApplication::applicationDisplayName();
 }
 
-QString __cdecl GetDomain()
+QString WINAPI GetDomain()
 {
 	QList<QNetworkInterface> ifaces = QNetworkInterface::allInterfaces();
 	bool result = false;
@@ -158,7 +165,7 @@ QString __cdecl GetDomain()
 	return new char();
 }
 
-QString __cdecl GetIp()
+QString WINAPI GetIp()
 {
 	QString ipResult;
 	foreach(const QNetworkInterface & qNetInterface, QNetworkInterface::allInterfaces()) {
@@ -172,7 +179,7 @@ QString __cdecl GetIp()
 	return ipResult;
 }
 
-bool __cdecl isConnected()
+bool WINAPI isConnected()
 {
 	INTERNET_STATUS status = INTERNET_STATUS::CONNECTION_ERROR;
 	status = IsConnectedToNet();
@@ -196,7 +203,7 @@ bool __cdecl isConnected()
 }
 
 template <class T>
-bool __cdecl TWidgetAction(void*& action, QString label, QString name)
+bool WINAPI TWidgetAction(void*& action, QString label, QString name)
 {
 	QWidget* w = new QWidget();
 	w->setAttribute(Qt::WA_DeleteOnClose, true);

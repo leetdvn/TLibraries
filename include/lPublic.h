@@ -55,18 +55,15 @@ using namespace std;
 //typedef QString(*TDisplayName)(QString);
 //using DISPLAYNAME = QString(*)(QString);
 struct pencil {
-	pencil(QString str);
+	explicit pencil(QString str);
 	QString toStr();
 	QString inp;
 };
 
-void getPencil(struct pencil* arg) {
-	arg = new pencil("new pencil");
-	qDebug() << arg->toStr() << endl;
-}
-
+extern void WINAPI getPencil(pencil* arg);
 static QString basefolder =  "C:/Users/" + UserId + QString("/AppData/Local/TPicker Data");
 static QString CommandPath = "C:/Users/LeePhan/Documents/GitHub/leePickerOPS/src/TCreateWorkspace.lee";
+static const char* TConfig = "C:/Users/LeePhan/Documents/leePhan/leePhan/Scripts/MEL/TConfigurations.json";
 static QJsonArray MayaCmdList;
 
 /// <summary>
@@ -157,7 +154,7 @@ extern QWidgetAction* WINAPI TWidgetAction(void*& action, QString label = NULL, 
 /// </summary>
 /// <param name="lApp"></param>
 /// <returns></returns>
-extern constexpr const char* WINAPI Cmd2Str(COMMANDAPP lApp);
+extern constexpr const char* WINAPI App2Name(APPINFO lApp);
 
 extern QString WINAPI TDisplayName(QString Message);
 

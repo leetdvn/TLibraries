@@ -36,7 +36,7 @@ void LeeInfo::InitializeLocation()
 		}*/
 		
 	}
-	data->dSaveFileCommand("C:/Users/LeePhan/Documents/leePhan/leePhan/Scripts/MEL/newCmd.lee",COMMANDAPP::LMAYA,"Create");
+	data->dSaveFileCommand("C:/Users/LeePhan/Documents/leePhan/leePhan/Scripts/MEL/newCmd.lee",APPINFO::LMAYA,"Create");
 	//qDebug() << str << data->dFileJs2JsObject(data->currentFile) <<  endl;
 
 
