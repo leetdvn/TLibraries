@@ -9,7 +9,7 @@ TConfiguration::TConfiguration(QString path,bool newconfig)
 
 TConfiguration::TConfiguration(const char* path,bool newconfig) { 
 	
-	Initial(path,newconfig);
+	lCreator(path,newconfig);
 }
 
 TConfiguration::~TConfiguration()
