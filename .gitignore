@@ -1,8 +1,15 @@
 /devkitBase
-/.vscode
 /build
 /x64
 /*.sln
 /*.vc*
 /.vs
 /TLibraries
+/out
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+/CMakeFiles
