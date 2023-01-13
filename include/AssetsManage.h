@@ -12,7 +12,7 @@ using namespace std;
 class EXPORT_API AssetsManage
 {
 public:
-	AssetsManage();
+	WINAPI AssetsManage();
 	void demo(int abc) {}
 
 private:

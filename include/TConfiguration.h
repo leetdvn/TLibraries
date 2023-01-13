@@ -2,7 +2,7 @@
 #ifndef TCONFIGURATION_H
 #define TCONFIGURATION_H
 
-#include <QtCore/QFile>
+#include <qt5/QtCore/QFile>
 #include <Windows.h>
 #include <iostream>
 #include <stdio.h>

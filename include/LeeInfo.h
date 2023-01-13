@@ -28,10 +28,10 @@ class EXPORT_API LeeInfo
 public:
 	LeeInfo();
 	~LeeInfo(){}
-	static const char* MACID;
-	static const char* User;
-	static const char* Host;
-	static const char* IpAddress;
+	const char* MACID;
+	const char* User;
+	const char* Host;
+	const char* IpAddress;
 	QString clientInfo;
 	void InitializeLocation();
 

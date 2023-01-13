@@ -5,11 +5,11 @@ LeeFtp::LeeFtp(QString host, QString username, QString pw)
 	//QFile* file = new QFile("test.txt");
 	urlInfo = toData(host);
 	userInfo = username;
-	LPCWSTR whost = toWData(host); // L"20.204.10.27";
-	LPCWSTR wuser = toWData(username);
-	LPCWSTR passwork = toWData(pw);
+	LPSTR whost = const_cast<LPSTR>(toData(host)); // L"20.204.10.27";
+	LPSTR wuser = const_cast<LPSTR>(toData(username));
+	LPSTR passwork = const_cast<LPSTR>(toData(pw));
 	netOpen = InternetOpen(0, INTERNET_OPEN_TYPE_PRECONFIG, 0, 0, 0);
-	FtpNet = InternetConnect(netOpen, whost, INTERNET_DEFAULT_FTP_PORT,
+	FtpNet = InternetConnect(netOpen, const_cast<LPSTR>(whost), INTERNET_DEFAULT_FTP_PORT,
 		wuser, passwork, INTERNET_SERVICE_FTP, 0, 0);
 	printf("connecting.. %s\n", toData(host));
 	printf("username: %s\n", toData(username));
@@ -41,10 +41,10 @@ void LeeFtp::FtpSentFile(QString localFile,QString remoteFolder)
 	else { remoteFolder = "./"; }
 	
 	QString n = remoteFolder + FileDetach(localFile);
-	LPCWSTR wlocalFile = toWData(localFile);
-	LPCWSTR wsent = toWData(n);//  L"/fileSending.txt";
+	LPSTR wlocalFile = const_cast<LPSTR>(toData(localFile));
+	LPSTR wsent = const_cast<LPSTR>(toData(n));//  L"/fileSending.txt";
 
-	if (FtpSetCurrentDirectory(FtpNet, L"./")) {
+	if (FtpSetCurrentDirectory(FtpNet, "./")) {
 		if (!FtpPutFile(FtpNet, wlocalFile, wsent, FTP_TRANSFER_TYPE_BINARY, 0))
 		{
 			qDebug() << "FAIL!" << n << endl;
@@ -71,8 +71,8 @@ void LeeFtp::FtpDownloadFile(QString saveFolder,QString remoteFile)
 	QString midle;
 	if (!saveFolder.endsWith("\\") || !saveFolder.endsWith("/"))
 		midle = "/./";
-	LPCWSTR wsavefile = toWData(saveFolder + midle + remoteFile);
-	LPCWSTR wFptFile = toWData(("./"+remoteFile));//  L"/fileSending.txt";
+	LPSTR wsavefile = const_cast<LPSTR>(toData(saveFolder + midle + remoteFile));
+	LPSTR wFptFile = const_cast<LPSTR>(toData(("./"+remoteFile)));//  L"/fileSending.txt";
 
 	if (!FtpGetFile(FtpNet, wFptFile, wsavefile, false, INTERNET_SERVICE_FTP, 0, 0))
 	{

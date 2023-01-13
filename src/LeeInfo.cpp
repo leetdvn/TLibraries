@@ -1,9 +1,5 @@
 #include "LeeInfo.h"
 
-const char* LeeInfo::Host;
-const char* LeeInfo::MACID;
-const char* LeeInfo::User;
-const char* LeeInfo::IpAddress;
 
 LeeInfo::LeeInfo()
 {
@@ -51,7 +47,7 @@ const char* LeeInfo::GetUser()
 	TCHAR  infoBuf[UNLEN + 1];
 	DWORD  bufCharCount = UNLEN + 1;
 	GetUserName(infoBuf, &bufCharCount);
-	wstring wstr = &infoBuf[0];
+	string wstr = &infoBuf[0];
 	string str(wstr.begin(), wstr.end());
 	const char* resutl= str.c_str();
 	return resutl;
