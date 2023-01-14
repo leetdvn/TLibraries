@@ -9,7 +9,8 @@ project(TLibraries VERSION 0.1.0)
 #     $<$<CONFIG:RELWITHDEBINFO>:QT_MESSAGELOGCONTEXT>
 # )
 
-
+include_directories(DEVKIT_INCLUDE_DIR)
+include_directories(DEVKIT_LIB_DIR)
 add_subdirectory(src)
 # add_subdirectory(lib)
 # add_subdirectory(devkitBase)

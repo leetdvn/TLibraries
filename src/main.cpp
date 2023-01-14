@@ -1,16 +1,14 @@
- #include "LeeInfo.h"
- #include "LeeDataBase.h"
- #include <winnt.h>
- #include <omp.h>
- #include "AssetsManage.h"
- #include <QtWidgets/QMainWindow>
- #include "LeeFtpsvc.h"
- #include "LeeMacro.h"
- #include <iostream>
- #include <stdio.h>
-
+#include "LeeInfo.h"
+#include "LeeDataBase.h"
+#include <winnt.h>
+#include <omp.h>
+#include "AssetsManage.h"
+#include <QtWidgets/QMainWindow>
+#include "LeeFtpsvc.h"
+#include "LeeMacro.h"
+#include <iostream>
+#include <stdio.h>
 #include <TConfiguration.h>
-
 // #define X3(...) CHECK2(__VA_ARGS__)
 
 // QCoreApplication* createApplication(int& argc, char* argv[])
