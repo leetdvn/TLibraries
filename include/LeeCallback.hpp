@@ -21,10 +21,10 @@ struct MyThunk
 
 typedef void (*CallbackType)(int);
 
-class MyClass
+class LeeCallback
 {
     CallbackType exObjCallback;
-    MyClass()
+    LeeCallback()
     {
         MyThunk* thunk = (MyThunk*)VirtualAlloc(NULL, sizeof(MyThunk), MEM_COMMIT, PAGE_READWRITE);
         if (thunk)
@@ -51,7 +51,7 @@ class MyClass
         }
     }
 
-    ~MyClass()
+    ~LeeCallback()
     {
         if (exObjCallback)
             VirtualFree(exObjCallback, 0, MEM_RELEASE);
@@ -66,7 +66,7 @@ class MyClass
     // thunk needs to remember this value and restore it after
     // Callback() exits.  Passing it as a parameter to Callback()
     // is a quick-n-dirty way for the thunk to do that...
-    static void Callback(void* pCtx, MyClass* pThis, int x)
+    static void Callback(void* pCtx, LeeCallback* pThis, int x)
     {
         //dosomething with pThis
     }
@@ -80,7 +80,7 @@ class MyClass
 class ExternalClass //This I cannot mess with.
 {
     //somestuff
-    void ExternalFunc(void(*callback)(void*,MyClass*,int), const void*) {
+    void ExternalFunc(void(*callback)(void*,LeeCallback*,int), const void*) {
         std::cout << "" << std::endl;
     }
 };
